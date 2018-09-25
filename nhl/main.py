@@ -1,4 +1,4 @@
-# pipenv run python main.py
+# When are the next habs games this week?
 
 import requests
 import arrow
@@ -21,7 +21,7 @@ def gen_url():
 
 def print_games(games):
     for game in games:
-        date = game['date']
+        date = arrow.get(game['date']).format('dddd')
         home = game['home']
         away = game['away']
         venue = game['venue']
