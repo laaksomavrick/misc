@@ -15,17 +15,18 @@ def parse_games(schedule):
 
 def gen_url():
     today = arrow.now().format('YYYY-MM-DD')
-    next_week = arrow.now().replace(days=7).format('YYYY-MM-DD')
-    url = f'https://statsapi.web.nhl.com/api/v1/schedule?teamId=8&startDate={today}&endDate={next_week}'
+    next_two_weeks = arrow.now().replace(days=14).format('YYYY-MM-DD')
+    url = f'https://statsapi.web.nhl.com/api/v1/schedule?teamId=8&startDate={today}&endDate={next_two_weeks}'
     return url
 
 def print_games(games):
     for game in games:
         date = arrow.get(game['date']).format('dddd')
+        day = arrow.get(game['date']).format('Do')
         home = game['home']
         away = game['away']
         venue = game['venue']
-        fmt = f"{date}: {home} vs. {away} at the {venue}."
+        fmt = f"{date} ({day}): {home} vs. {away} at the {venue}."
         print(fmt)
 
 url = gen_url()

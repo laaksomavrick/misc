@@ -10,7 +10,9 @@ names = [
   'Code.app',
   'Notes.app',
   'Monitor.app',
-  'iTerm.app'
+  'iTerm.app',
+  'Slack',
+  'Insomnia.app'
 ]
 
 greps = names.map { |tc| "-e #{tc}" }.join(" ")
